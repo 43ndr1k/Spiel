@@ -6,7 +6,10 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Hallo
+		//GUI wird erzeugt und angezeigt
+		RushHourGUI spiel = new RushHourGUI();
+		spiel.setVisible(true);
+
 	}
 
 }
