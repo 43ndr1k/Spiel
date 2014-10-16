@@ -11,7 +11,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	JPanel backPanel = new JPanel(new GridLayout(1,2)), buttonPanel = new JPanel(null),
 				 spielfeldPanel = new JPanel(new GridLayout(8, 8));
 	JButton neuButton = new JButton("Neues Spiel"), resButton = new JButton("Restart"), tippButton = new JButton("Tipp"), 
-			loesungButton = new JButton("Lösung"), beendenButton = new JButton("Beenden"), b[][] = new JButton[8][8];
+			loesungButton = new JButton("Lï¿½sung"), beendenButton = new JButton("Beenden"), b[][] = new JButton[8][8];
 
 	public RushHourGUI(){
 			    this.setTitle("Rush Hour");
@@ -75,7 +75,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			break;
 		case "Tipp" :
 			break;
-		case "Lösung" :
+		case "Loesung" :
 			break;
 		case "Beenden" :
 			System.exit(0);

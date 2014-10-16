@@ -9,6 +9,8 @@ public class Main {
 		//GUI wird erzeugt und angezeigt
 		RushHourGUI spiel = new RushHourGUI();
 		spiel.setVisible(true);
+		LeseSpielfelderTXT s = new LeseSpielfelderTXT();
+		s.LeseSpielfeld();
 
 	}
 

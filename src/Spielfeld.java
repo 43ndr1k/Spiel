@@ -17,16 +17,16 @@ public class Spielfeld {
 	public String getLoesung() {
 		return loesung;
 	}
-	
+	//TODO auto
 	public void restart(){
-		/*Jedes Spielfeld als eigene Text-Datei speichern.
+		/** Jedes Spielfeld als eigene Text-Datei speichern.
 		 *Die Autos mit ihren Eigenschaften sind dort aufgelistet.
-		 *Hier muss noch das Einlesen ergänzt werden!
+		 *Hier muss noch das Einlesen ergï¿½nzt werden!
 		 */
 		for(int i=0;i<autos.length;i++){
-			autos[i] = new Auto();
+			//autos[i] = new Auto();
 		}
-		//Auch der Tipp und die Lösung stehen mit in der txt.
+		//Auch der Tipp und die Lï¿½sung stehen mit in der txt.
 		tipp = "";
 		quelle = "";
 	}
