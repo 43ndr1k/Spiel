@@ -1,23 +1,35 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 
 public class LeseSpielfelderTXT {
 
+	String path = "Spielfelder";
+	
 	public void LeseSpielfeld(){
 		
 		
-		int anz = listDirectory("Spielfelder");
+	    File dir = new File(path);
+	    String[] directory = dir.list();
 		
-		for(int i=0;i<anz;i++){
+		for(String file: dir.list()){
+			System.out.println(file);
+			FileReader lvl;
 			try {
+				try {
+				lvl = new FileReader(path + "/" + file);
 				@SuppressWarnings("resource")
-				BufferedReader in = new BufferedReader(new FileReader("Spielfelder/Spielfeld"+i+".txt"));
+				BufferedReader in = new BufferedReader(lvl);
 				String zeile = null;
 				while ((zeile = in.readLine()) != null) {
 					System.out.println("Gelesene Zeile: " + zeile);
+				}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -27,9 +39,13 @@ public class LeseSpielfelderTXT {
 	}
 	
 	
-	private int listDirectory(String path){
-	    File file = new File(path);
-	    String[] directory = file.list();
-	    return directory.length;
-	}
+
+//	Spielfeld[] Spielfelder = new Spielfeld[anz];	
+//	String[][] z = new String[6][6];
+//	public void SpielfeldGenerieren(String zeile){
+		
+		
+//}		
+
 }
+
