@@ -68,7 +68,22 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		switch (arg0.getActionCommand()){
+		case "Neues Spiel" :
+			break;
+		case "Restart" :
+			break;
+		case "Tipp" :
+			break;
+		case "Lösung" :
+			break;
+		case "Beenden" :
+			System.exit(0);
+			break;
+		case "" :
+			break;
+		}
+
 		
 	}
 
