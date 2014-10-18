@@ -9,14 +9,16 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	Container cp1;
 	//Komponenten 
 	JPanel startPanel = new JPanel(new GridLayout(2,1)), startButtonPanel = new JPanel(), backPanel = new JPanel(new BorderLayout()), 
-			buttonPanel = new JPanel(), spielfeldPanel = new JPanel(new GridLayout(8, 8)), abfragePanel = new JPanel(new GridLayout(3,2));
+			buttonPanel = new JPanel(), spielfeldPanel = new JPanel(new GridLayout(8, 8)), abfragePanel = new JPanel(new GridLayout(3,2)),
+			zuegePanel = new JPanel(new FlowLayout());
 	JButton neuButton = new JButton("Neues Spiel"), resButton = new JButton("Restart"), tippButton = new JButton("Tipp"), 
 			loesungButton = new JButton("Loesung"), beendenButton = new JButton("Beenden"), b[][] = new JButton[8][8],
-			okButton = new JButton("OK"), beendenButton1 = new JButton("Beenden");
+			okButton = new JButton("OK"), abbrechenButton = new JButton("Abbrechen");
 	JLabel titelLabel = new JLabel("Rush Hour"), anzfLabel = new JLabel("Anzahl der Fahrzeuge: "),
-			anzspLabel = new JLabel("Anzahl der Spielzuege: ");
+			anzspLabel = new JLabel("Anzahl der Spielzuege: "), anzspLabel1 = new JLabel("Gespielte Zuege: ");
 	JFrame abfrage = new JFrame("Abfrage");
 	JComboBox anzf = new JComboBox(), anzsp = new JComboBox();
+	int zuege = 0;
 	
 
 	public RushHourGUI(){
@@ -38,6 +40,8 @@ public class RushHourGUI extends JFrame implements ActionListener{
 				beendenButton.setPreferredSize(new Dimension(150,30));
 				beendenButton.addActionListener(this);
 				backPanel.add(buttonPanel, BorderLayout.SOUTH);
+				zuegePanel.add(anzspLabel1);
+				backPanel.add(zuegePanel, BorderLayout.NORTH);
 				abfrage();
 				addaction();
 			}
@@ -57,9 +61,9 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	    abfragePanel.add(anzspLabel);
 	    abfragePanel.add(anzsp);
 	    abfragePanel.add(okButton);
-	    abfragePanel.add(beendenButton1);
+	    abfragePanel.add(abbrechenButton);
 	    okButton.addActionListener(this);
-	    beendenButton1.addActionListener(this);
+	    abbrechenButton.addActionListener(this);
 	    anzf.addActionListener(this);
 	    anzsp.addActionListener(this);
 		abfrage.setVisible(false);
@@ -103,12 +107,14 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			buttonPanel.add(tippButton);
 			buttonPanel.add(loesungButton);
 			buttonPanel.add(beendenButton);
+			zuege = 0;
+			anzspLabel1.setText("Gespielte Zuege: " + zuege);
 			
 			if (0 == anzf.getSelectedIndex()) {
-				//wenn 2 Autos ausgewählt
+				//wenn 2 Autos ausgewaehlt
 			}
 			if (0 == anzsp.getSelectedIndex()) {
-				//für 5 Spielzuege
+				//fuer 5 Spielzuege
 			}
 			
 			break;
@@ -118,15 +124,24 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			abfrage.setVisible(true);
 			break;
 		case "Restart" :
+			//alle Spielzuege zurueksetzen
 			break;
 		case "Tipp" :
+			//Tipp anzeigen
 			break;
 		case "Loesung" :
+			//Loesung anzeigen
 			break;
 		case "Beenden" :
 			System.exit(0);
 			break;
+		case "Abbrechen" :
+			abfrage.setVisible(false);
+			break;
 		case "" :
+			//wenn eine Aktion ausgeführt wird ->muss noch überprüft werden
+			zuege++;
+			anzspLabel1.setText("Gespielte Zuege: " + zuege);
 			break;
 		}
 
