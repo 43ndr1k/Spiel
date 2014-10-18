@@ -24,7 +24,6 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			    this.setSize(800, 700);
 			    this.setLocationRelativeTo(null);
 			    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			    //initStartGUI();
 			    cp1 = this.getContentPane();
 			    cp1.add(startPanel);
 			    startPanel.add(titelLabel);
@@ -47,25 +46,12 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		abfrage.setSize(300, 150);
 	    abfrage.setLocationRelativeTo(null);
 	    abfrage.add(abfragePanel);
-	    //abfrage.add(beendenButton);
-		
-		
-		for(int i=2; i<5; i++){
+		for(int i=2; i<5; i++){ //Moeglichkeiten fuer Fahrzeuge, zurzeit 2-4
 	    	anzf.addItem(i);
 	    }
-	    for(int i=5; i<8; i++) {
+	    for(int i=5; i<8; i++) { //Moeglichkeiten fuer Spielzuege, zurzeit 5-7
 	    	anzsp.addItem(i);
 	    }
-	    
-	    /*anzf.addActionListener( new ActionListener() {
-	    	  @Override public void actionPerformed( ActionEvent e )
-	    	  {
-	    	    System.out.println( e );
-	    	    JComboBox selectedChoice = (JComboBox) e.getSource();
-	    	    if ( "2".equals( selectedChoice.getSelectedItem() ) )
-	    	      System.exit( 0 );
-	    	  }
-	    	} ); */
 	    abfragePanel.add(anzfLabel);
 	    abfragePanel.add(anzf);
 	    abfragePanel.add(anzspLabel);
@@ -74,6 +60,8 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	    abfragePanel.add(beendenButton1);
 	    okButton.addActionListener(this);
 	    beendenButton1.addActionListener(this);
+	    anzf.addActionListener(this);
+	    anzsp.addActionListener(this);
 		abfrage.setVisible(false);
 	}
 	
@@ -115,8 +103,18 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			buttonPanel.add(tippButton);
 			buttonPanel.add(loesungButton);
 			buttonPanel.add(beendenButton);
+			
+			if (0 == anzf.getSelectedIndex()) {
+				//wenn 2 Autos ausgewählt
+			}
+			if (0 == anzsp.getSelectedIndex()) {
+				//für 5 Spielzuege
+			}
+			
 			break;
 		case "Neues Spiel" :
+			anzf.setSelectedIndex(0);
+			anzsp.setSelectedIndex(0);
 			abfrage.setVisible(true);
 			break;
 		case "Restart" :
