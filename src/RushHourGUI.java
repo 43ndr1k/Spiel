@@ -9,12 +9,15 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	Container cp1;
 	//Komponenten 
 	JPanel startPanel = new JPanel(new GridLayout(2,1)), startButtonPanel = new JPanel(), backPanel = new JPanel(new BorderLayout()), 
-			buttonPanel = new JPanel(), spielfeldPanel = new JPanel(new GridLayout(8, 8));
+			buttonPanel = new JPanel(), spielfeldPanel = new JPanel(new GridLayout(8, 8)), abfragePanel = new JPanel(new GridLayout(3,2));
 	JButton neuButton = new JButton("Neues Spiel"), resButton = new JButton("Restart"), tippButton = new JButton("Tipp"), 
 			loesungButton = new JButton("Loesung"), beendenButton = new JButton("Beenden"), b[][] = new JButton[8][8],
-			okButton = new JButton("OK");
-	JLabel titelLabel = new JLabel("Rush Hour");
+			okButton = new JButton("OK"), beendenButton1 = new JButton("Beenden");
+	JLabel titelLabel = new JLabel("Rush Hour"), anzfLabel = new JLabel("Anzahl der Fahrzeuge: "),
+			anzspLabel = new JLabel("Anzahl der Spielzuege: ");
 	JFrame abfrage = new JFrame("Abfrage");
+	JComboBox anzf = new JComboBox(), anzsp = new JComboBox();
+	
 
 	public RushHourGUI(){
 			    this.setTitle("Rush Hour");
@@ -41,11 +44,36 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			}
 		 
 	private void abfrage() {
-	    abfrage.setSize(250, 100);
+		abfrage.setSize(300, 150);
 	    abfrage.setLocationRelativeTo(null);
-	    abfrage.add(okButton);
+	    abfrage.add(abfragePanel);
 	    //abfrage.add(beendenButton);
-		okButton.addActionListener(this);
+		
+		
+		for(int i=2; i<5; i++){
+	    	anzf.addItem(i);
+	    }
+	    for(int i=5; i<8; i++) {
+	    	anzsp.addItem(i);
+	    }
+	    
+	    /*anzf.addActionListener( new ActionListener() {
+	    	  @Override public void actionPerformed( ActionEvent e )
+	    	  {
+	    	    System.out.println( e );
+	    	    JComboBox selectedChoice = (JComboBox) e.getSource();
+	    	    if ( "2".equals( selectedChoice.getSelectedItem() ) )
+	    	      System.exit( 0 );
+	    	  }
+	    	} ); */
+	    abfragePanel.add(anzfLabel);
+	    abfragePanel.add(anzf);
+	    abfragePanel.add(anzspLabel);
+	    abfragePanel.add(anzsp);
+	    abfragePanel.add(okButton);
+	    abfragePanel.add(beendenButton1);
+	    okButton.addActionListener(this);
+	    beendenButton1.addActionListener(this);
 		abfrage.setVisible(false);
 	}
 	
