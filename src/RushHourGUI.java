@@ -125,6 +125,8 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			break;
 		case "Restart" :
 			//alle Spielzuege zurueksetzen
+			zuege = 0;
+			anzspLabel1.setText("Gespielte Zuege: " + zuege);
 			break;
 		case "Tipp" :
 			//Tipp anzeigen
