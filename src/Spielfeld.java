@@ -6,16 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Spielfeld {
+	
 	private ArrayList<Auto> autos = new ArrayList<Auto>();
-	private ArrayList<String> tipps = new ArrayList<String>();
-	private ArrayList<String> loesungen = new ArrayList<String>();
-	
-	
-	
 	private String tipp;
 	private String loesung;
+	private String item;
 	private String quelle; // Name der Text-Datei
-	private String path = "Spielfelder";
+	// path = Ordner
+	private String path1 = "Spielfelder";
+	private String path2 = "Tipps";
+	private String path3 = "Loesungen";
 
 	public Spielfeld(String q) {
 		
@@ -30,7 +30,11 @@ public class Spielfeld {
 	public String getLoesung() {
 		return loesung;
 	}
-
+	
+	public ArrayList<Auto> getAutos() {
+		return autos;
+	}
+	
 	// TODO auto
 	public void restart() {
 		/**
@@ -39,16 +43,26 @@ public class Spielfeld {
 		 * erg�nzt werden!
 		 */
 
+		TxtLesen a = new TxtLesen(quelle, path1, autos);
+		TxtLesen t = new TxtLesen(quelle, path2, item);
+		TxtLesen q = new TxtLesen(quelle, path3, item);
 		
-
+		autos = a.getAutos();
+		
+		for(Auto p:autos){
+			System.out.println(p.getFarbe());
+			System.out.println(p.getxPos());
+		}
 		
 		// Auch der Tipp und die L�sung stehen mit in der txt.
-		tipp = "";
-		quelle = "";
+		tipp = t.getItem();
+		loesung = q.getItem();
+		System.out.println("tipp:"+tipp+"\n"+"loesung:"+loesung);
+		
 	}
 
-	public ArrayList<Auto> getAutos() {
-		return autos;
-	}
+
+	
+
 
 }
