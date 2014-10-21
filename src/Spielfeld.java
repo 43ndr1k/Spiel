@@ -1,8 +1,3 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Spielfeld {
@@ -37,7 +32,8 @@ public class Spielfeld {
 	
 	// TODO auto
 	public void restart() {
-
+		
+		// Für jedes Spielfeld neue Instanz, für Auto, Tipps und Lösungen
 		TxtLesen a = new TxtLesen(quelle, path1, autos);
 		TxtLesen t = new TxtLesen(quelle, path2);
 		TxtLesen q = new TxtLesen(quelle, path3);
@@ -51,9 +47,4 @@ public class Spielfeld {
 
 		
 	}
-
-
-	
-
-
 }
