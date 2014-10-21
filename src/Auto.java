@@ -1,23 +1,23 @@
 
 public class Auto {
-	private static String farbe;
-	private int xPos,yPos;
+	private  String farbe;
+	private  int xPos,yPos;
 	/* xPos und yPos geben ein Ende des Autos an.
 	 * Wenn das Auto horizontal steht, ist das Ende links.
 	 * Wenn das Auto vertikal steht, ist das Ende oben.**/
-	private static char richtung; // v=vertikal; h=horizontal
-	private static int laenge;
+	private char richtung; // v=vertikal; h=horizontal
+	private int laenge;
 	
 	public Auto(String f, int x, int y, char r, int l){
-		farbe = f;
-		xPos = x;
-		yPos = y;
-		richtung = r;
-		laenge = l;
+		this.farbe = f;
+		this.xPos = x;
+		this.yPos = y;
+		this.richtung = r;
+		this.laenge = l;
 	}
 	
 	
-	public static String getFarbe() {
+	public String getFarbe() {
 		return farbe;
 	}
 	public int getxPos() {
@@ -26,10 +26,10 @@ public class Auto {
 	public int getyPos() {
 		return yPos;
 	}
-	public static char getRichtung() {
+	public char getRichtung() {
 		return richtung;
 	}
-	public static int getLaenge() {
+	public int getLaenge() {
 		return laenge;
 	}
 

@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
  */
 public class TxtLesen {
 
-
 	private String quelle="",path="";
 	private ArrayList<Auto> autos = null;
 	private String item=null;
@@ -30,13 +28,7 @@ public class TxtLesen {
 		this.path = path;
 		this.autos = a;
 		lese();
-		autos.get(0);
-		System.out.println(Auto.getFarbe());
-		System.out.println(autos.get(1).getFarbe());
-		System.out.println(autos.get(2).getFarbe());
 	}
-
-
 
 	public TxtLesen(String quelle, String path) {
 		super();
@@ -45,8 +37,6 @@ public class TxtLesen {
 		lese();
 	}
 
-	
-
 	public ArrayList<Auto> getAutos() {
 		return autos;
 	}
@@ -54,7 +44,6 @@ public class TxtLesen {
 	public String getItem() {
 		return item;
 	}
-
 
 	private void lese(){
 
@@ -67,18 +56,13 @@ public class TxtLesen {
 
 				if(autos != null){
 					while ((zeile = in.readLine()) != null) {
-						System.out.println("Gelesene Zeile: " + zeile);
-						
+						//System.out.println("Gelesene Zeile: " + zeile);			
 						String[] items = zeile.split(";");	
-						//TODO
-						// Hier muss noch die richtige Dastellung eingepflegt werden. Wie soll die Autoliste dagestellt werden.
-						autos.add(new Auto(items[0],Integer.parseInt(items[1]),Integer.parseInt(items[2]),items[3].charAt(0),Integer.parseInt(items[4])));
-						
+						autos.add(new Auto(items[0],Integer.parseInt(items[1]),Integer.parseInt(items[2]),items[3].charAt(0),Integer.parseInt(items[4])));						
 					}
 				}
 				else{
 					item = in.readLine();
-
 				}
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -87,9 +71,5 @@ public class TxtLesen {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
 	}
-
-
 }
