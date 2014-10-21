@@ -44,15 +44,13 @@ public class Spielfeld {
 		 */
 
 		TxtLesen a = new TxtLesen(quelle, path1, autos);
-		TxtLesen t = new TxtLesen(quelle, path2, item);
-		TxtLesen q = new TxtLesen(quelle, path3, item);
+		TxtLesen t = new TxtLesen(quelle, path2);
+		TxtLesen q = new TxtLesen(quelle, path3);
 		
 		autos = a.getAutos();
 		
-		for(Auto p:autos){
-			System.out.println(p.getFarbe());
-			System.out.println(p.getxPos());
-		}
+		
+
 		
 		// Auch der Tipp und die L�sung stehen mit in der txt.
 		tipp = t.getItem();

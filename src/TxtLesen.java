@@ -30,15 +30,18 @@ public class TxtLesen {
 		this.path = path;
 		this.autos = a;
 		lese();
+		autos.get(0);
+		System.out.println(Auto.getFarbe());
+		System.out.println(autos.get(1).getFarbe());
+		System.out.println(autos.get(2).getFarbe());
 	}
 
 
 
-	public TxtLesen(String quelle, String path, String it) {
+	public TxtLesen(String quelle, String path) {
 		super();
 		this.quelle = quelle;
 		this.path = path;
-		this.item = it;
 		lese();
 	}
 
