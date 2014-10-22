@@ -1,0 +1,5 @@
+red, 4, 1, h, 2
+orange, 6, 4, v, 3
+yellow, 6, 6, v, 3
+green, 1, 4, h, 3
+blue, 2, 3, v, 2
