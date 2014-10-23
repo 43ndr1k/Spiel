@@ -115,9 +115,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			zuege = 0;
 			anzspLabel1.setText("Gespielte Zuege: " + zuege);
 			
-			int f = (Integer)anzf.getSelectedItem();
-			spielfeld = new Spielfeld(""+(f-1)+""+anzsp.getSelectedItem()+"");
-			System.out.println(""+(f-1)+""+anzsp.getSelectedItem()+"");
+			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+anzsp.getSelectedItem()+"");
 			
 			break;
 		case "Neues Spiel" :
