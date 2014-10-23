@@ -14,35 +14,28 @@ import java.util.ArrayList;
  */
 public class TxtLesen {
 
-	private String quelle="",path="";
-	private ArrayList<Auto> autos = null;
-	private String item=null;
+	private String quelle;
+	private ArrayList<Auto> autos = new ArrayList<Auto>();
+	private String loesung = null;
+	private String tipp = null;
+	private String[] paths = {"Spielfelder","Tipps","Loesungen"};
 
-	public TxtLesen(){
-		super();
-	}
-
-	public TxtLesen(String quelle, String path, ArrayList<Auto> a) {
+	public TxtLesen(String quelle) {
 		super();
 		this.quelle = quelle;
-		this.path = path;
-		this.autos = a;
 		lese();
 	}
 
-	public TxtLesen(String quelle, String path) {
-		super();
-		this.quelle = quelle;
-		this.path = path;
-		lese();
-	}
-
-	public ArrayList<Auto> getAutos() {
+	public ArrayList<Auto> getList() {
 		return autos;
 	}
-
-	public String getItem() {
-		return item;
+	
+	public String getTipp() {
+		return tipp;
+	}
+	
+	public String getLoesung() {
+		return loesung;
 	}
 
 	private void lese(){
@@ -50,22 +43,28 @@ public class TxtLesen {
 		FileReader lvl;
 		try {
 			try {
-				lvl = new FileReader(path + "/" + quelle);
-				BufferedReader in = new BufferedReader(lvl);
-				String zeile = null;
-
-				if(autos != null){
+				for (String path: paths){
+					lvl = new FileReader(path + "/" + quelle);
+					BufferedReader in = new BufferedReader(lvl);
+					String zeile = null;
 					while ((zeile = in.readLine()) != null) {
 						//System.out.println("Gelesene Zeile: " + zeile);
-						zeile = zeile.replace(" ","");
-						String[] items = zeile.split(",");	
-						autos.add(new Auto(items[0],Integer.parseInt(items[1]),Integer.parseInt(items[2]),items[3].charAt(0),Integer.parseInt(items[4])));						
+						if (path.equals(paths[0])){
+							zeile = zeile.replace(" ","");
+							String[] items = zeile.split(",");	
+							autos.add(new Auto(items[0],Integer.parseInt(items[1]),Integer.parseInt(items[2]),items[3].charAt(0),Integer.parseInt(items[4])));
+						}
+						else if (path.equals(paths[1])){
+							tipp = zeile;
+						}
+						else if (path.equals(paths[2])) {
+							loesung = zeile;
+						}
 					}
 				}
-				else{
-					item = in.readLine();
-				}
-			} catch (FileNotFoundException e1) {
+			}
+
+			catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
