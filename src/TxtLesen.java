@@ -57,7 +57,7 @@ public class TxtLesen {
 				if(autos != null){
 					while ((zeile = in.readLine()) != null) {
 						//System.out.println("Gelesene Zeile: " + zeile);			
-						String[] items = zeile.split(";");	
+						String[] items = zeile.split(", ");	
 						autos.add(new Auto(items[0],Integer.parseInt(items[1]),Integer.parseInt(items[2]),items[3].charAt(0),Integer.parseInt(items[4])));						
 					}
 				}
