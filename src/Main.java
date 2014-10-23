@@ -9,7 +9,12 @@ public class Main {
 		//GUI wird erzeugt und angezeigt
 		RushHourGUI spiel = new RushHourGUI();
 		spiel.setVisible(true);
-		
+
+		Spielfeld s = new Spielfeld("410");
+		s.getAutos();
+
+
+
 	}
 
 }
