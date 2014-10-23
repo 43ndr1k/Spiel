@@ -160,7 +160,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			Auto a = autos.get(i);
 			if(a.getRichtung()=='h'){
 				for(int j=a.getyPos();j<(a.getyPos()+a.getLaenge());j++){
-					b[a.getxPos()][j].setBackground(Color.getColor((a.getFarbe())));
+					b[a.getxPos()][j].setBackground(Color.getColor(a.getFarbe()));
 				}
 			}
 			if(a.getRichtung()=='v'){
