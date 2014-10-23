@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -114,9 +115,8 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			cp1.add(backPanel);
 			zuege = 0;
 			anzspLabel1.setText("Gespielte Zuege: " + zuege);
-			
 			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+anzsp.getSelectedItem()+"");
-			
+			spielfeldFuellen();
 			break;
 		case "Neues Spiel" :
 			anzf.setSelectedIndex(0);
@@ -127,6 +127,8 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			//alle Spielzuege zurueksetzen
 			zuege = 0;
 			anzspLabel1.setText("Gespielte Zuege: " + zuege);
+			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+anzsp.getSelectedItem()+"");
+			spielfeldFuellen();
 			break;
 		case "Tipp" :
 			//Tipp anzeigen
@@ -148,6 +150,38 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		}
 
 		
+	}
+	
+	//Visualisiert die Autos aus der Liste
+	public void spielfeldFuellen(){
+		ArrayList<Auto> autos = spielfeld.getAutos();
+		clear();
+		for(int i=0;i<autos.size();i++){
+			Auto a = autos.get(i);
+			if(a.getRichtung()=='h'){
+				for(int j=a.getyPos();j<(a.getyPos()+a.getLaenge());j++){
+					b[a.getxPos()][j].setBackground(Color.getColor((a.getFarbe())));
+				}
+			}
+			if(a.getRichtung()=='v'){
+				for(int j=a.getxPos();j>(a.getxPos()-a.getLaenge());j--){
+					b[j][a.getyPos()].setBackground(Color.getColor((a.getFarbe())));
+				}
+			}
+		}
+	}
+	
+	//Löscht alle angeziegten Autos
+	public void clear(){
+		for(int i=7; i>=0; i--) {
+			for (int j=0; j<=7; j++) {
+				if((i==7 || i==0 || j==7 || j==0) && (i!=4 || j==0)) {
+					b[i][j].setBackground(Color.DARK_GRAY);
+				} else {
+					b[i][j].setBackground(Color.WHITE);
+				}
+			}
+		}
 	}
 
 }
