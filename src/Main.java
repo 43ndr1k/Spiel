@@ -11,7 +11,7 @@ public class Main {
 		spiel.setVisible(true);
 
 		Spielfeld s = new Spielfeld("410");
-
+		s.getAutos();
 
 
 
