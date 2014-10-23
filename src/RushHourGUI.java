@@ -21,6 +21,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	JComboBox anzf = new JComboBox(), anzsp = new JComboBox();
 	int zuege = 0;
 	
+	Spielfeld spielfeld = null;
 
 	public RushHourGUI(){
 			    this.setTitle("Rush Hour");
@@ -51,12 +52,13 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		abfrage.setSize(300, 150);
 	    abfrage.setLocationRelativeTo(null);
 	    abfrage.add(abfragePanel);
-		for(int i=2; i<5; i++){ //Moeglichkeiten fuer Fahrzeuge, zurzeit 2-4
+	    for(int i=5; i<8; i++){ //Moeglichkeiten fuer Fahrzeuge
 	    	anzf.addItem(i);
 	    }
-	    for(int i=5; i<8; i++) { //Moeglichkeiten fuer Spielzuege, zurzeit 5-7
-	    	anzsp.addItem(i);
-	    }
+	    //Moeglichkeiten fuer Spielzuege
+	    anzsp.addItem(7);
+	    anzsp.addItem(9);
+	    anzsp.addItem(10);
 	    abfragePanel.add(anzfLabel);
 	    abfragePanel.add(anzf);
 	    abfragePanel.add(anzspLabel);
@@ -95,6 +97,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 				if((i==7 || i==0 || j==7 || j==0) && (i!=4 || j==0)) {
 					b[i][j].setBackground(Color.DARK_GRAY);
 				} else {
+					b[i][j].setBackground(Color.WHITE);
 					b[i][j].addActionListener(this);
 				}
 			}
@@ -112,12 +115,9 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			zuege = 0;
 			anzspLabel1.setText("Gespielte Zuege: " + zuege);
 			
-			if (0 == anzf.getSelectedIndex()) {
-				//wenn 2 Autos ausgewaehlt
-			}
-			if (0 == anzsp.getSelectedIndex()) {
-				//fuer 5 Spielzuege
-			}
+			int f = (Integer)anzf.getSelectedItem();
+			spielfeld = new Spielfeld(""+(f-1)+""+anzsp.getSelectedItem()+"");
+			System.out.println(""+(f-1)+""+anzsp.getSelectedItem()+"");
 			
 			break;
 		case "Neues Spiel" :
