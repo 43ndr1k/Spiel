@@ -10,7 +10,7 @@ public class Main {
 		RushHourGUI spiel = new RushHourGUI();
 		spiel.setVisible(true);
 
-		Spielfeld s = new Spielfeld("410");
+		Spielfeld s = new Spielfeld("47");
 		//s.getAutos();
 		
 		for(Auto a:s.getAutos()){
