@@ -252,8 +252,12 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		ende.setSize(300, 150);
 	    ende.setLocationRelativeTo(null);
 	   	ende.add(endeLabel);
-	   	endeLabel.setText("Sie haben gewonnen!!!\n Benötigte Spielzüge: "+zuege+"\n Minimale Spielzüge: "+spielfeld.getZuege());
+	   	endeLabel.setText("<html>Sie haben gewonnen!!!<br> Benötigte Spielzüge: "+zuege+"<br> Minimale Spielzüge: "+spielfeld.getZuege()+"</html>");
 	   	ende.setVisible(true);
+	   	zuege = 0;
+		anzspLabel1.setText("Gespielte Zuege: " + zuege);
+	   	spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+anzsp.getSelectedItem()+"");
+		spielfeldFuellen();
 	}
 
 }

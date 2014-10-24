@@ -26,8 +26,9 @@ public class Spielfeld {
 	public String getZuege(){
 		char c;
 		c = quelle.charAt(1);
-		if(c == '1') return "10";
-		return ""+c;
+		int i = Integer.parseInt(""+c);
+		if(i == 1) i=10;
+		return ""+(i+5);
 	}
 	
 	public int getAutoIndex(Color c){
