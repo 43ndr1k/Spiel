@@ -17,8 +17,9 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			okButton = new JButton("OK"), abbrechenButton = new JButton("Abbrechen"), neuButton1 = new JButton("Neues Spiel"),
 			beendenButton1 = new JButton("Beenden");
 	JLabel titelLabel = new JLabel("Rush Hour"), anzfLabel = new JLabel("Anzahl der Fahrzeuge: "),
-			anzspLabel = new JLabel("Anzahl der Spielzuege: "), anzspLabel1 = new JLabel("Gespielte Zuege: ");
-	JFrame abfrage = new JFrame("Abfrage");
+			anzspLabel = new JLabel("Anzahl der Spielzuege: "), anzspLabel1 = new JLabel("Gespielte Zuege: "),
+			endeLabel = new JLabel();
+	JFrame abfrage = new JFrame("Abfrage"), ende = new JFrame ("Gewonnen!");
 	JComboBox anzf = new JComboBox(), anzsp = new JComboBox();
 	int zuege = 0;
 	
@@ -108,6 +109,9 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		JButton x = null;
+		int xKoord,yKoord;
+		char richtung;
 		switch (arg0.getActionCommand()){
 		case "OK" :
 			abfrage.setVisible(false);
@@ -142,12 +146,51 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		case "Abbrechen" :
 			abfrage.setVisible(false);
 			break;
-		case "" :
-			//wenn eine Aktion ausgeführt wird ->muss noch überprüft werden
-			zuege++;
-			anzspLabel1.setText("Gespielte Zuege: " + zuege);
-			JButton x = (JButton)arg0.getSource();
-			
+		case "0":
+			x = (JButton)arg0.getSource();
+			xKoord = spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).getxPos();
+			yKoord = spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).getyPos();
+			richtung = spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).getRichtung();
+			if(richtung == 'v'){
+				if(b[xKoord+1][yKoord].getBackground()==Color.WHITE){
+					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).zurueck();
+					zuege++;
+					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+				}
+			}
+			if(richtung == 'h'){
+				if(b[xKoord][yKoord-1].getBackground()==Color.WHITE){
+					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).zurueck();
+					zuege++;
+					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+				}
+			}
+			spielfeldFuellen();
+			break;
+		case "1":
+			x = (JButton)arg0.getSource();
+			xKoord = spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).getxPos();
+			yKoord = spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).getyPos();
+			int laenge = spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).getLaenge();
+			richtung = spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).getRichtung();
+			if(richtung == 'v'){
+				if(b[xKoord-laenge][yKoord].getBackground()==Color.WHITE){
+					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).vor();
+					zuege++;
+					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+				}
+			}
+			if(richtung == 'h'){
+				if(b[xKoord][yKoord+laenge].getBackground()==Color.WHITE){
+					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).vor();
+					zuege++;
+					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+				}
+			}
+			spielfeldFuellen();
+			if(b[4][7].getBackground()==Color.red){
+				spielEnde();
+			}
 			break;
 		}
 
@@ -163,11 +206,28 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			if(a.getRichtung()=='h'){
 				for(int j=a.getyPos();j<(a.getyPos()+a.getLaenge());j++){
 					b[a.getxPos()][j].setBackground(a.getFarbe());
+					if(j==a.getyPos()){
+						b[a.getxPos()][j].setText("0");
+						b[a.getxPos()][j].setForeground(a.getFarbe());
+					}
+					if(j==(a.getyPos()+a.getLaenge()-1)){
+						b[a.getxPos()][j].setText("1");
+						b[a.getxPos()][j].setForeground(a.getFarbe());
+					}
+					
 				}
 			}
 			if(a.getRichtung()=='v'){
 				for(int j=a.getxPos();j>(a.getxPos()-a.getLaenge());j--){
 					b[j][a.getyPos()].setBackground(a.getFarbe());
+					if(j==a.getxPos()){
+						b[j][a.getyPos()].setText("0");
+						b[j][a.getyPos()].setForeground(a.getFarbe());
+					}
+					if(j==(a.getxPos()-a.getLaenge()+1)){
+						b[j][a.getyPos()].setText("1");
+						b[j][a.getyPos()].setForeground(a.getFarbe());
+					}
 				}
 			}
 		}
@@ -179,11 +239,21 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			for (int j=0; j<=7; j++) {
 				if((i==7 || i==0 || j==7 || j==0) && (i!=4 || j==0)) {
 					b[i][j].setBackground(Color.DARK_GRAY);
+					b[i][j].setText("");
 				} else {
 					b[i][j].setBackground(Color.WHITE);
+					b[i][j].setText("");
 				}
 			}
 		}
+	}
+	
+	public void spielEnde(){
+		ende.setSize(300, 150);
+	    ende.setLocationRelativeTo(null);
+	   	ende.add(endeLabel);
+	   	endeLabel.setText("Sie haben gewonnen!!!\n Benötigte Spielzüge: "+zuege+"\n Minimale Spielzüge: "+spielfeld.getZuege());
+	   	ende.setVisible(true);
 	}
 
 }
