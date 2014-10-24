@@ -46,11 +46,11 @@ public class Auto {
 
 
 	public void vor(){
-		if(richtung=='v') yPos++;
-		if(richtung=='h') xPos++;
+		if(richtung=='v') xPos++;
+		if(richtung=='h') yPos++;
 	}
 	public void zurueck(){
-		if(richtung=='v') yPos--;
-		if(richtung=='h') xPos--;
+		if(richtung=='v') xPos--;
+		if(richtung=='h') yPos--;
 	}
 }
