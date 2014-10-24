@@ -87,8 +87,6 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		beendenButton.addActionListener(this);
 		backPanel.add(spielfeldPanel, BorderLayout.CENTER);
 		initSpielfeld();
-		  
-		  
 	}
 	
 	private void initSpielfeld() {
