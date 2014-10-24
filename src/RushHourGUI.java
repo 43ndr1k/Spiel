@@ -146,6 +146,8 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			//wenn eine Aktion ausgeführt wird ->muss noch überprüft werden
 			zuege++;
 			anzspLabel1.setText("Gespielte Zuege: " + zuege);
+			JButton x = (JButton)arg0.getSource();
+			
 			break;
 		}
 
