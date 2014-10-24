@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 
 public class Auto {
 	private  String farbe;
@@ -17,8 +19,17 @@ public class Auto {
 	}
 	
 	
-	public String getFarbe() {
-		return farbe;
+	public Color getFarbe() {
+		if(farbe.equals("blue")) return Color.blue;
+		if(farbe.equals("cyan")) return Color.cyan;
+		if(farbe.equals("green")) return Color.green;
+		if(farbe.equals("magenta")) return Color.magenta;
+		if(farbe.equals("orange")) return Color.orange;
+		if(farbe.equals("pink")) return Color.pink;
+		if(farbe.equals("red")) return Color.red;
+		if(farbe.equals("yellow")) return Color.yellow;
+		else return null;
+		
 	}
 	public int getxPos() {
 		return xPos;
