@@ -58,9 +58,9 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	    	anzf.addItem(i);
 	    }
 	    //Moeglichkeiten fuer Spielzuege
-	    anzsp.addItem(7);
-	    anzsp.addItem(9);
-	    anzsp.addItem(10);
+	    anzsp.addItem(12);
+	    anzsp.addItem(14);
+	    anzsp.addItem(15);
 	    abfragePanel.add(anzfLabel);
 	    abfragePanel.add(anzf);
 	    abfragePanel.add(anzspLabel);
@@ -117,7 +117,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			cp1.add(backPanel);
 			zuege = 0;
 			anzspLabel1.setText("Gespielte Zuege: " + zuege);
-			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+anzsp.getSelectedItem()+"");
+			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+((Integer)anzsp.getSelectedItem()-5)+"");
 			spielfeldFuellen();
 			break;
 		case "Neues Spiel" :
@@ -254,7 +254,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	   	ende.setVisible(true);
 	   	zuege = 0;
 		anzspLabel1.setText("Gespielte Zuege: " + zuege);
-	   	spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+anzsp.getSelectedItem()+"");
+	   	spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+((Integer)anzsp.getSelectedItem()-5)+"");
 		spielfeldFuellen();
 	}
 
