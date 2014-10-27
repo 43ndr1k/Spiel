@@ -91,7 +91,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		regelnPanel.add(regelnOK);
 		regelnLabel.setHorizontalAlignment(JLabel.CENTER);
 		regelnLabel.setVerticalAlignment(JLabel.CENTER);
-		regelnLabel.setText("NYI");
+		regelnLabel.setText("NYI - in Entwicklung");
 		regelnOK.addActionListener(this);
 		regeln.setModal(true);
 		regeln.setVisible(false);
