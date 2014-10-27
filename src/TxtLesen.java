@@ -37,7 +37,7 @@ public class TxtLesen {
 	public String getLoesung() {
 		return loesung;
 	}
-
+	
 	private void lese(){
 
 		FileReader lvl;
