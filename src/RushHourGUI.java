@@ -11,9 +11,10 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	//Komponenten 
 	JPanel startPanel = new JPanel(new GridLayout(2,1)), startButtonPanel = new JPanel(), backPanel = new JPanel(new BorderLayout()), 
 			buttonPanel = new JPanel(), spielfeldPanel = new JPanel(new GridLayout(8, 8)), abfragePanel = new JPanel(new GridLayout(3,2)),
-			zuegePanel = new JPanel(new FlowLayout()), regelnPanel = new JPanel(), ratPanel = new JPanel(), loesungPanel = new JPanel();
+			zuegePanel = new JPanel(new FlowLayout()), regelnPanel = new JPanel(), ratPanel = new JPanel(), loesungPanel = new JPanel(),
+			endePanel = new JPanel(new BorderLayout()), endeBPanel = new JPanel(new GridLayout(1,2));;
 	JButton neuButton = new JButton("Neues Spiel"), resButton = new JButton("Restart"), tippButton = new JButton("Hilfe"), 
-			beendenButton = new JButton("Beenden"), b[][] = new JButton[8][8],
+			beendenButton = new JButton("Beenden"), b[][] = new JButton[8][8], neuButton2 = new JButton("Neues Spiel"), resButton1 = new JButton("Restart"),
 			okButton = new JButton("OK"), abbrechenButton = new JButton("Abbrechen"), neuButton1 = new JButton("Neues Spiel"),
 			beendenButton1 = new JButton("Beenden"), regelnButton = new JButton("Spielregeln"), regelnOK = new JButton("Zurück"),
 			weiter = new JButton("Weiter versuchen"), lösungsButton= new JButton ("Das war nicht Hilfreich"), danke = new JButton ("Danke");
@@ -55,6 +56,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 				regeln();
 				rat();
 				buttonP();
+				ende();
 				loesung();
 			}
 		 
@@ -80,6 +82,20 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	    anzf.addActionListener(this);
 	    anzsp.addActionListener(this);
 		abfrage.setVisible(false);
+	}
+	
+	private void ende() {
+		ende.setSize(300, 150);
+		ende.setLocationRelativeTo(null);
+		ende.add(endePanel);
+		endePanel.add(endeLabel, BorderLayout.CENTER);
+		endeLabel.setHorizontalAlignment(JLabel.CENTER);
+		endePanel.add(endeBPanel, BorderLayout.SOUTH);
+		endeBPanel.add(neuButton2);
+		endeBPanel.add(resButton1);
+		neuButton2.addActionListener(this);
+		resButton1.addActionListener(this);
+		ende.setVisible(false);
 	}
 	
 	private void regeln(){
@@ -184,10 +200,12 @@ public class RushHourGUI extends JFrame implements ActionListener{
 		case "Neues Spiel" :
 			anzf.setSelectedIndex(0);
 			anzsp.setSelectedIndex(0);
+			ende.setVisible(false);
 			abfrage.setVisible(true);
 			break;
 		case "Restart" :
 			//alle Spielzuege zurueksetzen
+			ende.setVisible(false);
 			zuege = 0;
 			anzspLabel1.setText("Gespielte Zuege: " + zuege);
 			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+((Integer)anzsp.getSelectedItem()-5)+"");
@@ -317,9 +335,6 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	}
 	
 	public void spielEnde(){
-		ende.setSize(300, 150);
-	    ende.setLocationRelativeTo(null);
-	   	ende.add(endeLabel);
 	   	endeLabel.setText("<html>Sie haben gewonnen!<br> Benötigte Spielzüge: "+zuege+"<br> Minimale Spielzüge: "+spielfeld.getZuege()+"</html>");
 	   	ende.setVisible(true);
 	   	zuege = 0;
