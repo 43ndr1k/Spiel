@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Spielfeld {
 	
-	private static TxtLesen spielfeld = null;
+	private TxtLesen spielfeld = null;
 	private String quelle; // Name der Text-Datei
 
 	public Spielfeld(String q) {	
@@ -11,11 +11,11 @@ public class Spielfeld {
 		spielfeld = new TxtLesen(quelle);
 	}
 
-	public static String getTipp() {
+	public String getTipp() {
 		return spielfeld.getTipp();
 	}
 
-	public static String getLoesung() {
+	public String getLoesung() {
 		return spielfeld.getLoesung();
 	}
 	

@@ -12,7 +12,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	JPanel startPanel = new JPanel(new GridLayout(2,1)), startButtonPanel = new JPanel(), backPanel = new JPanel(new BorderLayout()), 
 			buttonPanel = new JPanel(), spielfeldPanel = new JPanel(new GridLayout(8, 8)), abfragePanel = new JPanel(new GridLayout(3,2)),
 			zuegePanel = new JPanel(new FlowLayout()), regelnPanel = new JPanel(), ratPanel = new JPanel(), loesungPanel = new JPanel(),
-			endePanel = new JPanel(new BorderLayout()), endeBPanel = new JPanel(new GridLayout(1,2));;
+			endePanel = new JPanel(new BorderLayout()), endeBPanel = new JPanel(new GridLayout(1,2));
 	JButton neuButton = new JButton("Neues Spiel"), resButton = new JButton("Restart"), tippButton = new JButton("Hilfe"), 
 			beendenButton = new JButton("Beenden"), b[][] = new JButton[8][8], neuButton2 = new JButton("Neues Spiel"), resButton1 = new JButton("Restart"),
 			okButton = new JButton("OK"), abbrechenButton = new JButton("Abbrechen"), neuButton1 = new JButton("Neues Spiel"),
@@ -212,7 +212,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			spielfeldFuellen();
 			break;
 		case "Hilfe" :
-			ratLabel.setText(Spielfeld.getTipp());
+			ratLabel.setText(spielfeld.getTipp());
 			rat.setVisible(true);
 			break;
 		case "Weiter versuchen" :
@@ -220,7 +220,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			break;
 		case "Das war nicht Hilfreich" :
 			rat.setVisible(false);
-			loesungLabel.setText(Spielfeld.getLoesung());
+			loesungLabel.setText(spielfeld.getLoesung());
 			loesung.setVisible(true);
 			break;
 		case "Danke" :
