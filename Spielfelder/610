@@ -1,7 +1,7 @@
 red, 4, 1, h, 2
-orange, 6, 6, h, 3
+orange, 6, 4, h, 3
 yellow, 6, 3, v, 3
-green, 5, 3, v, 3
-blue, 5, 4, v, 2
-pink, 3, 4, v, 2
-cyan, 3, 5, h, 2
+green, 5, 4, v, 2
+blue, 3, 4, v, 2
+pink, 3, 2, h, 2
+cyan, 5, 6, v, 2
