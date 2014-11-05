@@ -19,7 +19,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			beendenButton1 = new JButton("Beenden"), regelnOK = new JButton("Zurück"),
 			weiter = new JButton("Weiter versuchen"), loesungsButton= new JButton ("Das war nicht Hilfreich"), schliessen = new JButton ("Schließen");
 	JLabel titelLabel = new JLabel("Rush Hour"), anzfLabel = new JLabel("Anzahl der Fahrzeuge: "),
-			anzspLabel = new JLabel("Anzahl der Spielzuege: "), anzspLabel1 = new JLabel("Gespielte Zuege: "),
+			anzspLabel = new JLabel("Anzahl der Spielzüge: "), anzspLabel1 = new JLabel("Gespielte Züge: "),
 			endeLabel = new JLabel(), ratLabel = new JLabel(), loesungLabel = new JLabel();
 	JFrame abfrage = new JFrame("Abfrage"), ende = new JFrame ("Gewonnen!"), hilfe = new JFrame("Hilfe");
 	JDialog regeln = new JDialog(), rat = new JDialog(), loesung = new JDialog();
@@ -166,12 +166,9 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			startPanel.setVisible(false);
 			cp1.add(backPanel);
 			zuege = 0;
-			anzspLabel1.setText("Gespielte Zuege: " + zuege);
+			anzspLabel1.setText("Gespielte Züge: " + zuege);
 			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+((Integer)anzsp.getSelectedItem()-5)+"");
 			spielfeldFuellen();
-			break;
-		case "Spielregeln" :
-			regeln.setVisible(true);
 			break;
 		case "Zurück" :
 			regeln.setVisible(false);
@@ -186,7 +183,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 			//alle Spielzuege zurueksetzen
 			ende.setVisible(false);
 			zuege = 0;
-			anzspLabel1.setText("Gespielte Zuege: " + zuege);
+			anzspLabel1.setText("Gespielte Züge: " + zuege);
 			spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+((Integer)anzsp.getSelectedItem()-5)+"");
 			spielfeldFuellen();
 			break;
@@ -220,14 +217,14 @@ public class RushHourGUI extends JFrame implements ActionListener{
 				if(b[xKoord+1][yKoord].getBackground()==Color.WHITE){
 					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).zurueck();
 					zuege++;
-					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+					anzspLabel1.setText("Gespielte Züge: " + zuege);
 				}
 			}
 			if(richtung == 'h'){
 				if(b[xKoord][yKoord-1].getBackground()==Color.WHITE){
 					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).zurueck();
 					zuege++;
-					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+					anzspLabel1.setText("Gespielte Züge: " + zuege);
 				}
 			}
 			spielfeldFuellen();
@@ -242,14 +239,14 @@ public class RushHourGUI extends JFrame implements ActionListener{
 				if(b[xKoord-laenge][yKoord].getBackground()==Color.WHITE){
 					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).vor();
 					zuege++;
-					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+					anzspLabel1.setText("Gespielte Züge: " + zuege);
 				}
 			}
 			if(richtung == 'h'){
 				if(b[xKoord][yKoord+laenge].getBackground()==Color.WHITE){
 					spielfeld.getAutos().get(spielfeld.getAutoIndex(x.getBackground())).vor();
 					zuege++;
-					anzspLabel1.setText("Gespielte Zuege: " + zuege);
+					anzspLabel1.setText("Gespielte Züge: " + zuege);
 				}
 			}
 			spielfeldFuellen();
@@ -317,7 +314,7 @@ public class RushHourGUI extends JFrame implements ActionListener{
 	   	endeLabel.setText("<html>Sie haben gewonnen!<br> Benötigte Spielzüge: "+zuege+"<br> Minimale Spielzüge: "+spielfeld.getZuege()+"</html>");
 	   	ende.setVisible(true);
 	   	zuege = 0;
-		anzspLabel1.setText("Gespielte Zuege: " + zuege);
+		anzspLabel1.setText("Gespielte Züge: " + zuege);
 	   	spielfeld = new Spielfeld(""+(((Integer)anzf.getSelectedItem())-1)+""+((Integer)anzsp.getSelectedItem()-5)+"");
 		spielfeldFuellen();
 	}
